@@ -1,26 +1,57 @@
-body{
-  background-color: black;
-  color: white;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
+/* Base styles */
+body {
+  background: #141414;
+  color: #ffffff;
 }
-.movie-app > .row{
-  margin: 0;
-  overflow: auto;
+
+.movie-app > .row {
+  overflow-x: auto;
   flex-wrap: nowrap;
-
 }
-.image-container{
+
+.image-container {
   position: relative;
   transition: transform 0.2s;
-
 }
-.image-container:hover{
-  transform: scale(1.1);
+
+.image-container:hover {
   cursor: pointer;
+  transform: scale(1.1);
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  transition: 0.5s ease;
+  opacity: 0;
+  bottom: 0;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Responsive styles */
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .movie-app > .row {
+    flex-wrap: wrap; /* Allow rows to wrap on small screens */
+  }
+
+  .image-container {
+    margin: 0 10px 20px 10px; /* Add spacing between images */
+    width: calc(50% - 20px); /* Arrange images in two columns */
+  }
+}
+
+/* Tablet and Desktop styles */
+@media (min-width: 768px) {
+  .image-container {
+    width: calc(33.33% - 20px); /* Arrange images in three columns */
+  }
 }
