@@ -99,22 +99,20 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-const getPopularMovies = async () => {
-  const randomMovies = Math.floor(Math.random() * 100) + 1;
-  const url = `http://www.omdbapi.com/?s=popular&apikey=bb000501&page=${randomMovies}`;
+  const getPopularMovies = async () => {
+    const url = `http://www.omdbapi.com/?s=popular&apikey=bb000501`;
 
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
 
-    if (data.Search) {
-      setMovies(data.Search);
+      if (data.Search) {
+        setMovies(data.Search);
+      }
+    } catch (error) {
+      console.error("Error fetching popular movies:", error);
     }
-  } catch (error) {
-    console.error("Error fetching random popular movies:", error);
-  }
-};
-
+  };
 
   const getMovies = async (searchTerm) => {
     const url = searchTerm
@@ -133,11 +131,10 @@ const getPopularMovies = async () => {
     }
   };
 
-useEffect(() => {
-  getPopularMovies();
-  getFavouritesFromLocalStorage();
-}, []);
-
+  useEffect(() => {
+    getPopularMovies();
+    getFavouritesFromLocalStorage();
+  }, []);
 
   useEffect(() => {
     getMovies(searchTerm);
@@ -145,7 +142,7 @@ useEffect(() => {
 
   const getFavouritesFromLocalStorage = () => {
     const movieFavourites = JSON.parse(
-      localStorage.getItem("favourite-movies")
+      localStorage.getItem("react-movie-app-favourites")
     );
 
     if (movieFavourites) {
@@ -154,7 +151,7 @@ useEffect(() => {
   };
 
   const saveToLocalStorage = (items) => {
-    localStorage.setItem("favourite-movies", JSON.stringify(items));
+    localStorage.setItem("react-movie-app-favourites", JSON.stringify(items));
   };
 
   const addFavouriteMovie = (movie) => {
