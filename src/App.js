@@ -93,7 +93,7 @@ import SearchBox from "./components/SearchBox";
 import AddFavourite from "./components/AddFavourite";
 import RemoveFavourite from "./components/RemoveFavourites";
 import MovieDetail from "./components/MovieDetail";
-import { BrowserRouter , Router, Routes } from "react-router-dom";
+
 
 
 const App = () => {

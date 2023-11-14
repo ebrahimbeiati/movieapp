@@ -30,7 +30,7 @@
 // export default MovieList;
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+
 
 const MovieList = (props) => {
   const [detailedMovies, setDetailedMovies] = useState([]);
