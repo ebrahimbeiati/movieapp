@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+<!-- # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -67,4 +67,50 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->
+Movie App
+Overview
+This is a movie app built using React that fetches data from the IMDb API. The app allows users to explore movies, view details, and discover information about various films available on IMDb.
+
+Features
+Browse Movies: Explore a vast collection of movies fetched from the IMDb database.
+Movie Details: View detailed information about each movie, including synopsis, ratings, cast, and more.
+Search Functionality: Search for specific movies based on title, genre, or other criteria.
+Responsive Design: Enjoy a seamless experience on various devices, thanks to the app's responsiveness.
+Installation
+Clone this repository: git clone [repository_link]
+Navigate to the project directory: cd movie-app
+Install dependencies: npm install
+Configuration
+To run this app, you'll need an IMDb API key. Follow these steps to set it up:
+
+Visit the IMDb API website and sign in or create an account.
+Generate an API key.
+Create a .env file in the root directory of the project.
+Add your IMDb API key to the .env file: REACT_APP_IMDB_API_KEY=your_api_key_here
+Usage
+Run the app locally:
+
+bash
+Copy code
+npm start
+Access the app in your browser at http://localhost:3000.
+
+Technologies Used
+React
+IMDb API
+Contributing
+Contributions are welcome! Please follow these steps:
+
+Fork the repository.
+Create a new branch: git checkout -b feature/new-feature.
+Make your changes and commit them: git commit -m 'Add new feature'.
+Push to the branch: git push origin feature/new-feature.
+Submit a pull request.
+License
+This project is licensed under the MIT License.
+
+Acknowledgements
+IMDb API
+React Documentation
+Create React App
