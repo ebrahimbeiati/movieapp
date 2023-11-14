@@ -92,6 +92,9 @@ import MovieListHeading from "./components/MovieListHeading";
 import SearchBox from "./components/SearchBox";
 import AddFavourite from "./components/AddFavourite";
 import RemoveFavourite from "./components/RemoveFavourites";
+import MovieDetail from "./components/MovieDetail";
+import { BrowserRouter , Router, Routes } from "react-router-dom";
+
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -173,33 +176,39 @@ const App = () => {
     setSelectedMovie(movie);
   };
 
-  return (
-    <div className="container-fluid movie-app">
-      <div className="row d-flex align-items-center mt-4 mb-4">
-        <MovieListHeading heading="Movies" />
-        <SearchBox searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+    return (
+      <div className="container-fluid movie-app">
+        <div className="row d-flex align-items-center mt-4 mb-4">
+          <MovieListHeading heading="Movies" />
+          <SearchBox searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        </div>
+        <div className="row">
+          <MovieList
+            movies={movies}
+            handleFavouritesClick={addFavouriteMovie}
+            handleMovieClick={handleMovieClick}
+            favouriteComponent={AddFavourite}
+          />
+        </div>
+        <div className="row d-flex align-items-center mt-4 mb-4">
+          <MovieListHeading heading="Favourites"  />
+        </div>
+        <div className="row">
+          <MovieList
+            movies={favourites}
+            handleFavouritesClick={removeFavouriteMovie}
+            handleMovieClick={handleMovieClick}
+            favouriteComponent={RemoveFavourite}
+          />
+        </div>
+        {selectedMovie && (
+          <MovieDetail
+            movie={selectedMovie}
+            handleMovieClose={() => setSelectedMovie(null)}
+          />
+        )}
       </div>
-      <div className="row">
-        <MovieList
-          movies={movies}
-          handleFavouritesClick={addFavouriteMovie}
-          handleMovieClick={handleMovieClick}
-          favouriteComponent={AddFavourite}
-        />
-      </div>
-      <div className="row d-flex align-items-center mt-4 mb-4">
-        <MovieListHeading heading="Favourites"  />
-      </div>
-      <div className="row">
-        <MovieList
-          movies={favourites}
-          handleFavouritesClick={removeFavouriteMovie}
-          handleMovieClick={handleMovieClick}
-          favouriteComponent={RemoveFavourite}
-        />
-      </div>
-    </div>
-  );
+    );
 };
-
-export default App;
+  export default App;
+   
