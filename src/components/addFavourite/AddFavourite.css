@@ -1,0 +1,21 @@
+/* Floating Action Button */
+.fav-button-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f54291;
+    padding: 15px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 100;
+  }
+  
+  .fav-button-floating:hover {
+    background-color: #ff2b87;
+    transform: translateY(-10px);
+  }
+  

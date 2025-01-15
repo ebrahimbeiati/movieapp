@@ -1,117 +1,59 @@
-/* Base styles
+/* Global Styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
 body {
-  background: #141414;
-  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9; /* Light background */
+  color: #333; 
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+  overflow-x: hidden;
 }
 
-.movie-app > .row {
-  overflow-x: auto;
-  flex-wrap: nowrap;
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.image-container {
-  position: relative;
-  transition: transform 0.2s;
+a:hover {
+  color: #ff4081; /* Accent color */
+  transition: color 0.3s ease-in-out;
 }
 
-.image-container:hover {
-  cursor: pointer;
-  transform: scale(1.1);
+/* Basic Reset */
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif;
 }
 
-.image-container:hover .overlay {
-  opacity: 1;
-}
-
-.overlay {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.8);
-  width: 100%;
-  transition: 0.5s ease;
-  opacity: 0;
-  bottom: 0;
-  font-size: 20px;
-  padding: 20px;
-  text-align: center;
-}
-
-
-@media (max-width: 767px) {
-  .movie-app > .row {
-    flex-wrap: wrap; 
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 2rem;
   }
 
-  .image-container {
-    margin: 0 10px 20px 10px; 
-    width: calc(50% - 20px); 
+  /* Movie Detail */
+  .movie-title {
+    font-size: 1.8rem;
   }
-}
 
-
-@media (min-width: 768px) {
-  .image-container {
-    width: calc(33.33% - 20px); 
+  .movie-description {
+    font-size: 0.9rem;
   }
-} */
 
-
-/* Base styles */
-/* Base styles */
-body {
-  background: #f3f3f3; /* Lighter background color */
-  color: #333333; /* Darker text color for better readability */
-  font-family: 'Arial', sans-serif; /* Use a common sans-serif font */
-  margin: 0; /* Remove default body margin */
-  padding: 0; /* Remove default body padding */
-}
-
-.movie-app > .row {
-  display: flex; /* Use flexbox for better layout control */
-  flex-wrap: wrap;
-  justify-content: space-around; /* Center-align items in rows */
-}
-
-.image-container {
-  position: relative;
-  transition: transform 0.3s ease-in-out;
-  border-radius: 8px; /* Add subtle border radius for a more modern look */
-  overflow: hidden; /* Ensure images don't overflow their containers */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
-}
-
-.image-container:hover {
-  cursor: pointer;
-  transform: scale(1.05); /* Slightly increase scale on hover */
-}
-
-.image-container:hover .overlay {
-  opacity: 1;
-}
-
-.overlay {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.7); /* Slightly transparent black overlay */
-  width: 100%;
-  transition: opacity 0.3s ease-in-out;
-  opacity: 0;
-  bottom: 0;
-  font-size: 16px; /* Smaller font size */
-  padding: 15px; /* Reduced padding for a cleaner look */
-  text-align: center;
-  color: #ffffff; /* White text color for better contrast */
-  box-sizing: border-box; /* Include padding in element's total width */
-}
-
-/* Responsive styles */
-@media (max-width: 767px) {
-  .image-container {
-    margin: 0 10px 20px 10px;
-    width: calc(50% - 20px);
-  }
-}
-
-@media (min-width: 768px) {
-  .image-container {
-    width: calc(33.33% - 20px);
+  /* Floating Button */
+  .fav-button {
+    padding: 12px;
+    font-size: 18px;
   }
 }
