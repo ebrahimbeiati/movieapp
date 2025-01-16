@@ -1,61 +1,19 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import "./MovieList.css";
+import React from "react";
+import MovieCard from "../movieCard/MovieCard";
 
-
-const MovieList = (props) => {
-  const [detailedMovies, setDetailedMovies] = useState([]);
-
-  useEffect(() => {
-    const fetchDetailedMovies = async () => {
-      const detailedMoviesData = await Promise.all(
-        props.movies.map(async (movie) => {
-          // Fetch detailed movie data using IMDb ID (use 'i' instead of 's' for a single movie)
-          const response = await axios.get(
-            `http://www.omdbapi.com/?i=${movie.imdbID}&apikey=bb000501`
-          );
-          return response.data; // Assuming the API response contains details like Title, Plot, Actors, etc.
-        })
-      );
-      setDetailedMovies(detailedMoviesData);
-    };
-
-    fetchDetailedMovies();
-  }, [props.movies]);
-
-  const FavouriteComponent = props.favouriteComponent;
-
+const MovieList = ({ movies, onMovieClick, toggleFavorite, favorites }) => {
   return (
-    <>
-      {detailedMovies.map((movie, index) => (
-       
-          <div
-            className="image-container gap-2 d-flex  overflow-wrap: break-word justify-content-start m-2"
-            key={movie.imdbID}
-          >
-            <img src={movie.Poster} alt="movie" />
-            <div>
-              <h3>{movie.Title}</h3>
-              <p>{movie.Plot}</p>
-            <p>Actors: {movie.Actors}</p>
-            <p>Director: {movie.Director}</p>
-            <p>Genre: {movie.Genre}</p>
-            <p>Released: {movie.Released}</p>
-            <p>Runtime: {movie.Runtime}</p>
-            
-              {/* Other movie details can be accessed similarly */}
-            </div>
-
-            <div
-              onClick={() => props.handleFavouritesClick(movie)}
-              className="overlay d-flex align-items-center justify-content-center"
-            >
-              <FavouriteComponent />
-            </div>
-          </div>
-        
+    <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-10">
+      {movies.map((movie) => (
+        <MovieCard
+          key={movie.imdbID}
+          movie={movie}
+          onClick={() => onMovieClick(movie)}
+          toggleFavorite={toggleFavorite}
+          isFavorite={favorites.some((fav) => fav.imdbID === movie.imdbID)}
+        />
       ))}
-    </>
+    </div>
   );
 };
 
